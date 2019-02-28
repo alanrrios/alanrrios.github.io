@@ -34,3 +34,13 @@ Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework 
 ## Copyright and License
 
 Copyright 2013-2019 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-resume/blob/gh-pages/LICENSE) license.
+
+Now featuring:
+
+# PDF.js [![Build Status](https://travis-ci.org/mozilla/pdf.js.svg?branch=master)](https://travis-ci.org/mozilla/pdf.js)
+
+PDF.js is a Portable Document Format (PDF) viewer that is built with HTML5.
+
+PDF.js is community-driven and supported by Mozilla Labs. Our goal is to
+create a general-purpose, web standards-based platform for parsing and
+rendering PDFs.

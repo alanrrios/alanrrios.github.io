@@ -51,3 +51,19 @@ body {
   color: #fff;
   text-decoration: none;
 }
+
+.card-styles {
+  margin:0 auto;
+  background-color: #292929 !important;
+}
+
+.card-styles a {
+  color: #6c757d;
+  text-decoration: none;
+
+}
+
+.card-styles a:focus,
+.card-styles a:hover {
+  color: #fff;
+}

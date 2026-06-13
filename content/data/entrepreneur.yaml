@@ -1,9 +1,11 @@
 budgiter:
   company: Budgiter
+  category: ["Software"]
   team: [] # none - solo founder
   funded: false
 
 gaea:
   company: Gaea Cafe
+  category: ["Food"]
   team: [] # none - solo founder
   funded: false

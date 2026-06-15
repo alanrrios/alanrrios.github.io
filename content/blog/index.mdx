@@ -1,0 +1,37 @@
+---
+title: alanrrios.com
+description: Journal-style landing page for a markdown reader blog, plus technical build notes.
+accessTier: 0
+infoside:
+  recommended:
+    - post: resume
+    - post: budgiter
+  related:
+    - post: notes/code
+---
+
+# {frontmatter.title}
+
+What better stage to command digital presence than a modern approach to the blogging era? A place where expression is not limited to the content itself but with the additional performance of design and development.
+
+Welcome and mind the content. This is more of a practice on acknowledging and doubling down on broad and expansive digital footprints. Anyone who’s read any previous posts or contributed to growing concepts through conversation knows there **will** be <Term id="infohazard">infohazards</Term> going forward. Watch your head, stay light on your feet, and consider this <Term id="lore">lore</Term> as primary canon.
+
+## What you will find here
+
+- [Notes](/notes/code/) - notes expanding on comments, thoughts, and perspectives.
+- [Budgiter](/budgiter/) - summary of budgeting with Budgiter tools and options.
+- [Background](/resume/) - resume-style history of past work and experiences.
+
+Each section aims to read like an ongoing journal: practical, iterative, and updated over time instead of polished once and forgotten. Expect novice writing with a skill tree spec’d more into logic. This is a place more for shape rotators than wordcels.
+
+## How this site is built
+
+Under the hood, this is a lightweight docs-style site powered by Astro with content authored in MDX. Astro handles routing and page generation while MDX keeps each post in plain markdown with optional JSX components when needed.
+
+Deployment runs on Cloudflare, which keeps hosting simple and globally fast. Styling is handled with Tailwind, and the content structure is organized so new journal entries can be added quickly without changing application code.
+
+The stack is intentionally minimal:
+
+Astro for static-first pages and layout composition
+MDX for markdown-native writing with component flexibility
+Cloudflare for deployment and edge delivery

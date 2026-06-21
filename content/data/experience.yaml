@@ -1,0 +1,50 @@
+updated: 20260620
+
+production-associate-tesla:
+  type: work
+  company: Tesla
+  title: Production Associate
+  category:
+    - General Labor
+    - Manufacturing
+  location: Field
+  pay:
+    rate: Hourly
+    type: Full-time
+    amount: 22
+    currency: USD
+  dateStart: January 2024
+  dateEnds: September 2025
+
+clerical-support-irs:
+  type: work
+  company: IRS
+  title: Clerical Support
+  category:
+    - Data Entry
+  location: Office
+  pay:
+    rate: Hourly
+    type: Full-time
+    amount: 20
+    currency: USD
+  dateStart: December 2022
+  dateEnds: December 2022
+
+technical-specialist-apple:
+  type: work
+  company: Apple
+  title: Technical Specialist
+  category:
+    - Customer Service
+    - Technical Support
+    - Sales
+  location: Retail
+  pay:
+    rate: Hourly
+    type: Part-time
+    hours: 20
+    amount: 17
+    currency: USD
+  dateStart: July 2016
+  dateEnds: July 2020

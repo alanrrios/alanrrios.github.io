@@ -1,9 +1,13 @@
-updated: 20260622
+updated: 20260623
+# prospects: false
 
 budgiter:
   company: Budgiter
-  category: ["Software"]
-  team: [] # none - solo founder
+  category:
+    - Software
+  team:
+    Alan Rios:
+      - Sole Director
   funded: false
 
 gaea:

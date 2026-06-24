@@ -15,3 +15,9 @@ gaea:
   category: ["Food"]
   team: [] # none - solo founder
   funded: false
+  opportunities:
+    pitch_competition:
+      host: Liftoff Houston
+      focus: Business Plan Competition
+      status: Finalist
+      takeaway: "Branding builds the vision; spreadsheets win the judges"

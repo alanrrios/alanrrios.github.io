@@ -1,4 +1,4 @@
-updated: 20260628
+updated: 20260629
 # prospects: false
 
 budgiter:
@@ -9,6 +9,12 @@ budgiter:
     Alan Rios:
       - Sole Director
   funded: false
+  opportunities:
+    cold_outreach:
+      host: Ramp VC Database
+      focus: Feedback
+      status: Active Campaign
+      takeaway: "Engaging outreach honeypots; telegraphing activity visibility"
 
 gaea:
   company: Gaea Cafe

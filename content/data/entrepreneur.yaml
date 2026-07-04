@@ -1,4 +1,4 @@
-updated: 20260702
+updated: 20260703
 # prospects: false
 
 budgiter:
@@ -13,7 +13,7 @@ budgiter:
     cold_outreach:
       host: Ramp VC Database
       focus: Feedback
-      status: Active Campaign
+      status: No Response
       takeaway: "Engaging outreach honeypots; telegraphing activity visibility"
 
 gaea:

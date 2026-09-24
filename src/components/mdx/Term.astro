@@ -1,0 +1,20 @@
+---
+interface Props {
+	/** Glossary term id. Lookup stays on the GitLab site; Pages only keeps the words. */
+	id: string;
+	class?: string;
+}
+
+const { id, class: className = "" } = Astro.props;
+const hasSlot = Astro.slots.has("default");
+---
+
+<span
+	class:list={[
+		"underline decoration-dotted decoration-from-font underline-offset-[0.15em]",
+		className,
+	]}
+	data-term-id={id}
+>
+	{hasSlot ? <slot /> : id}
+</span>

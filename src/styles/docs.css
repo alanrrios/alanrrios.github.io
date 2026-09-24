@@ -1,0 +1,8 @@
+@import './global.css';
+@plugin '@tailwindcss/typography';
+
+@layer components {
+	.doc-shell {
+		@apply mx-auto max-w-2xl px-6 py-8 pb-16;
+	}
+}

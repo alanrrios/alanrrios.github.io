@@ -48,28 +48,38 @@ jobs:
         run: |
           test -n "$GITLAB_PIPELINE_TRIGGER_TOKEN"
           test -n "$GITLAB_PROJECT_ID"
-          args=(
-            --fail --silent --show-error --request POST
-            --form "token=${GITLAB_PIPELINE_TRIGGER_TOKEN}"
-            --form "ref=main"
-            --form "variables[TRIGGER_SOURCE]=github-pages-content"
-            --form "variables[GITHUB_SHA]=${GITHUB_SHA}"
-          )
-          # Manual run only. A content push must not put Stripe values into the pipeline.
-          # --form-string keeps whsec_ / sk_ / rk_ / price_ / prod_ literal.
-          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
-            for name in \
-              STRIPE_WEBHOOK_SECRET \
-              STRIPE_SECRET_KEY \
-              STRIPE_THUMBS_UP_PRICE_ID \
-              STRIPE_HIGH_FIVE_PRICE_ID \
-              STRIPE_THUNDER_DAP_PRICE_ID
-            do
-              value="${!name}"
-              if [ -n "$value" ]; then
-                args+=(--form-string "variables[${name}]=${value}")
-              fi
-            done
-          fi
-          curl "${args[@]}" \
+          # JSON, not a form body. GitLab's trigger form turns "+" in a whsec_
+          # into a space, so the Worker secret no longer matches Stripe.
+          # A content push must not include the Stripe values.
+          payload=$(jq -n \
+            --arg token "$GITLAB_PIPELINE_TRIGGER_TOKEN" \
+            --arg sha "$GITHUB_SHA" \
+            --arg event "$EVENT_NAME" \
+            --arg whsec "${STRIPE_WEBHOOK_SECRET:-}" \
+            --arg secret_key "${STRIPE_SECRET_KEY:-}" \
+            --arg thumbs "${STRIPE_THUMBS_UP_PRICE_ID:-}" \
+            --arg high_five "${STRIPE_HIGH_FIVE_PRICE_ID:-}" \
+            --arg thunder "${STRIPE_THUNDER_DAP_PRICE_ID:-}" \
+            '{
+              token: $token,
+              ref: "main",
+              variables: (
+                {
+                  TRIGGER_SOURCE: "github-pages-content",
+                  GITHUB_SHA: $sha
+                }
+                + (if $event == "workflow_dispatch" then {
+                    STRIPE_WEBHOOK_SECRET: $whsec,
+                    STRIPE_SECRET_KEY: $secret_key,
+                    STRIPE_THUMBS_UP_PRICE_ID: $thumbs,
+                    STRIPE_HIGH_FIVE_PRICE_ID: $high_five,
+                    STRIPE_THUNDER_DAP_PRICE_ID: $thunder
+                  } else {} end)
+              )
+            }
+            | .variables |= with_entries(select(.value != ""))
+          ')
+          printf '%s' "$payload" | curl --fail --silent --show-error --request POST \
+            --header "Content-Type: application/json" \
+            --data-binary @- \
             "https://gitlab.com/api/v4/projects/${GITLAB_PROJECT_ID}/trigger/pipeline"
